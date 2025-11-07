@@ -16,8 +16,9 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  min-height: 100vh;
   color: #fff;
+  padding: 10px;
 }
 
 @keyframes gradientAnimation {
@@ -49,6 +50,7 @@ body {
   z-index: 100;
   animation: fadeOut 1s ease forwards;
   animation-delay: 3s;
+  padding: 20px;
 }
 
 @keyframes fadeOut {
@@ -61,6 +63,8 @@ body {
 .splash-content {
   text-align: center;
   animation: pulse 2s infinite;
+  width: 100%;
+  max-width: 500px;
 }
 
 @keyframes pulse {
@@ -79,27 +83,30 @@ body {
 
 .splash h1 {
   color: #fff;
-  font-size: 3.5rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
   margin-bottom: 20px;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
   background: linear-gradient(45deg, #ff6ec4, #7873f5, #4adec7);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  word-wrap: break-word;
 }
 
 .splash p {
   color: #fff;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 4vw, 1.2rem);
   margin-bottom: 30px;
 }
 
 .loading-bar {
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: 6px;
   background-color: rgba(255, 255, 255, 0.2);
   border-radius: 3px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .loading-progress {
@@ -127,9 +134,10 @@ body {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   animation: fadeIn 1s ease forwards;
   animation-delay: 3.5s;
+  padding: 10px;
 }
 
 @keyframes fadeIn {
@@ -145,8 +153,8 @@ body {
 /* Header */
 header {
   color: #fff;
-  font-size: 3rem;
-  margin-bottom: 20px;
+  font-size: clamp(1.8rem, 7vw, 3rem);
+  margin-bottom: 15px;
   text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
   text-align: center;
   background: linear-gradient(45deg, #ff6ec4, #7873f5, #4adec7);
@@ -155,19 +163,22 @@ header {
   background-clip: text;
   font-weight: 700;
   letter-spacing: 1px;
+  padding: 0 10px;
+  width: 100%;
 }
 
 /* Pembungkus model-viewer */
 .model-viewer-wrapper {
-  width: 95%;
+  width: 100%;
   max-width: 1200px;
-  height: 75vh;
+  height: 60vh;
+  min-height: 400px;
   background: rgba(0, 0, 0, 0.3);
   border: 3px solid;
   border-image-slice: 1;
   border-width: 3px;
   border-image-source: linear-gradient(45deg, #ff6ec4, #7873f5, #4adec7);
-  border-radius: 20px;
+  border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -175,29 +186,33 @@ header {
   justify-content: center;
   backdrop-filter: blur(5px);
   position: relative;
+  margin-bottom: 20px;
 }
 
 /* Kontrol interaktif */
 .controls {
   position: absolute;
-  bottom: 20px;
-  left: 20px;
+  bottom: 15px;
+  left: 15px;
   display: flex;
-  gap: 10px;
+  gap: 8px;
   z-index: 10;
+  flex-wrap: wrap;
+  max-width: calc(100% - 30px);
 }
 
 .control-btn {
   background: rgba(0, 0, 0, 0.5);
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 8px 12px;
   border-radius: 50px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 3vw, 0.9rem);
   transition: all 0.3s ease;
   backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
 }
 
 .control-btn:hover {
@@ -208,41 +223,93 @@ header {
 /* Footer */
 footer {
   color: #fff;
-  font-size: 1rem;
+  font-size: clamp(0.8rem, 3vw, 1rem);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  padding: 8px 15px;
+  border-radius: 20px;
+  backdrop-filter: blur(5px);
+  margin-top: 10px;
   position: fixed;
   bottom: 20px;
   right: 20px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-  padding: 8px 15px;
-  /* border-radius: 20px;
-  backdrop-filter: blur(5px);
-  border: 1px solid rgba(255, 255, 255, 0.1); */
+  width: auto;
 }
 
 /* Responsif untuk perangkat mobile */
 @media (max-width: 768px) {
-  .splash h1 {
-    font-size: 2.5rem;
+  body {
+    padding: 5px;
+    justify-content: flex-start;
+    padding-top: 20px;
   }
 
-  header {
-    font-size: 2.2rem;
+  .container {
+    padding: 5px;
+    justify-content: flex-start;
   }
 
   .model-viewer-wrapper {
-    height: 65vh;
-    width: 90%;
+    height: 50vh;
+    min-height: 350px;
+    margin-bottom: 10px;
   }
 
   .controls {
     bottom: 10px;
     left: 10px;
-    flex-direction: column;
+    gap: 5px;
+  }
+
+  .control-btn {
+    padding: 6px 10px;
   }
 
   footer {
-    font-size: 0.8rem;
-    bottom: 10px;
-    right: 10px;
+    margin-top: 5px;
   }
+}
+
+@media (max-width: 480px) {
+  .model-viewer-wrapper {
+    height: 45vh;
+    min-height: 300px;
+    border-radius: 10px;
+  }
+
+  .controls {
+    flex-direction: column;
+    width: auto;
+  }
+
+  header {
+    margin-bottom: 10px;
+  }
+}
+
+/* Untuk orientasi landscape di mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .container {
+    justify-content: flex-start;
+    padding-top: 10px;
+  }
+
+  .model-viewer-wrapper {
+    height: 70vh;
+    min-height: 250px;
+  }
+
+  header {
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+  }
+}
+
+/* Touch-friendly improvements */
+.control-btn {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+model-viewer {
+  outline: none;
 }
